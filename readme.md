@@ -6,7 +6,7 @@
 
 
 ## MVP (DOM - CANVAS)
-    Un avatar que se desplace por una pataforma esquivando los agujeros y consiga llegar a la meta 
+    Un avatar que se desplace por una pataforma esquivando diferentes obstaculos y consiga llegar a la meta 
 
 ## Backlog
     - Crear desniveles en el suelo
