@@ -60,8 +60,8 @@ Definition of the different states and their transition (transition functions)
 
 ### Git
 URls for the project repo and deploy
-[Link Repo](http://github.com)
-[Link Deploy](http://github.com)
+[Link Repo](http://github.com/johanBautista/GAME/tree/master)
+[Link Deploy](http://github.com/johanBautista/GAME/tree/deploy)
 
 
 ### Slides
