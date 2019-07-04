@@ -4,8 +4,10 @@ document.onload = (function(){
     this.ctx = canvas.getContext("2d");
     canvas.width = 1000;
     canvas.height = 500;
-    
-  game = new Game();
+
+    game = new Game();
+}
+  
 
 // esto va dentro del game
 game.drawBoard();
