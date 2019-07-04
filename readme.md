@@ -51,11 +51,11 @@ Definition of the different states and their transition (transition functions)
 
 ## Task
 
-
+https://trello.com/b/XAmkDgev
 
 
 ### Trello
-[Link url](https://trello.com)
+[Link url](https://trello.com/b/XAmkDgev)
 
 
 ### Git
