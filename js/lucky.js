@@ -7,7 +7,16 @@ class Lucky {
     this.color = "#AAAAAA";
   }
 
-  move() {
-    this.x++;
+  moveRight() {
+    this.x += 20;
+  }
+  moveLeft() {
+    this.x -= 20;
+  }
+  moveJump() {
+    this.y -= 20;
+  }
+  moveDown() {
+    this.y += 20;
   }
 }
