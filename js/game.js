@@ -4,11 +4,13 @@ class Game {
     this.lucky = new Lucky(50, 310);
     this.floor = new Floor(0, 400);
   }
+
   drawBoard() {
     this.ctx.fillStyle = "#253F5C";
     this.ctx.fillRect(0, 0, 1000, 500);
     //console.log("ejecuta board!");
   }
+
   drawFloor() {
     this.ctx.fillStyle = this.floor.color;
     this.ctx.fillRect(
@@ -19,6 +21,7 @@ class Game {
     );
     //console.log("ejecuta floor!");
   }
+
   drawDanger() {
     this.ctx.fillStyle = this.floor.color;
     this.ctx.fillRect(
@@ -29,6 +32,7 @@ class Game {
     );
     //console.log("ejecuta floor!");
   }
+
   drawLucky() {
     this.ctx.fillStyle = this.lucky.color;
     this.ctx.fillRect(
@@ -64,10 +68,12 @@ class Game {
     // console.log("pep");
     this.drawBoard();
     // this.lucky.move();
+    this.drawDanger();
     this.drawFloor();
     this.drawLucky();
     window.requestAnimationFrame(this.update.bind(this));
   }
+
   start() {
     console.log("ejecuta start");
     this.assignControls();
