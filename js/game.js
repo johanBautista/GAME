@@ -1,14 +1,13 @@
 class Game {
-  constructor(ctx) {
+  constructor(ctx, canvasWidth, canvasHeight) {
     this.ctx = ctx;
-    this.lucky = new Lucky(50, 310);
+    this.lucky = new Lucky(50, 310, ctx, this.gravity);
     this.floor = new Floor(0, 400);
   }
 
   drawBoard() {
     this.ctx.fillStyle = "#253F5C";
-    this.ctx.fillRect(0, 0, 1000, 500);
-    //console.log("ejecuta board!");
+    this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
   }
 
   drawFloor() {
@@ -70,7 +69,8 @@ class Game {
     // this.lucky.move();
     this.drawDanger();
     this.drawFloor();
-    this.drawLucky();
+    this.lucky.update();
+    this.lucky.draw();
     window.requestAnimationFrame(this.update.bind(this));
   }
 

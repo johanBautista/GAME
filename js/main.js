@@ -8,7 +8,3 @@ document.onload = (function() {
   game = new Game(ctx);
   game.start();
 })();
-
-// hacer que el cuadrado salte
-// poner limites a la izquierda del screen
-// tratar al suelo como ....
