@@ -3,6 +3,8 @@ class Game {
     this.ctx = ctx;
     this.lucky = new Lucky(50, 310, ctx, this.gravity);
     this.floor = new Floor(0, 400);
+    this.canvasWidth = canvasWidth;
+    this.canvasHeight = canvasHeight;
   }
 
   drawBoard() {
@@ -57,16 +59,13 @@ class Game {
         case 40:
           this.lucky.moveDown();
           break;
-        // aqui se puede poner otro case para pausa o reset.
       }
-      //console.log("ejecuta arrow");
     };
   }
 
   update() {
-    // console.log("pep");
+    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     this.drawBoard();
-    // this.lucky.move();
     this.drawDanger();
     this.drawFloor();
     this.lucky.update();
@@ -75,7 +74,6 @@ class Game {
   }
 
   start() {
-    console.log("ejecuta start");
     this.assignControls();
     this.update();
   }
