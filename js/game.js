@@ -80,6 +80,3 @@ class Game {
     this.update();
   }
 }
-
-//color verde "#257d8a"
-// color #384d57
