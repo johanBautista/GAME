@@ -3,6 +3,7 @@ class Game {
     this.ctx = ctx;
     this.lucky = new Lucky(50, 310, ctx, this.gravity);
     this.floor = new Floor(0, 400, ctx);
+    this.danger = new Danger(850, 350, ctx);
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
   }
@@ -10,27 +11,6 @@ class Game {
   drawBoard() {
     this.ctx.fillStyle = "#253F5C";
     this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
-  }
-
-  drawDanger() {
-    this.ctx.fillStyle = this.floor.color;
-    this.ctx.fillRect(
-      this.floor.x,
-      this.floor.y,
-      this.floor.width,
-      this.floor.height
-    );
-    //console.log("ejecuta floor!");
-  }
-
-  drawLucky() {
-    this.ctx.fillStyle = this.lucky.color;
-    this.ctx.fillRect(
-      this.lucky.x,
-      this.lucky.y,
-      this.lucky.width,
-      this.lucky.height
-    );
   }
 
   assignControls() {
@@ -56,7 +36,9 @@ class Game {
     //this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     this.drawBoard();
     this.floor.moveLeft();
+    this.danger.moveLeft();
     this.floor.draw();
+    this.danger.draw();
     this.lucky.update();
     this.lucky.draw();
     window.requestAnimationFrame(this.update.bind(this));
