@@ -1,11 +1,14 @@
 class Game {
   constructor(ctx, canvasWidth, canvasHeight) {
     this.ctx = ctx;
-    this.lucky = new Lucky(50, 310, ctx, this.gravity);
+    this.lucky = new Lucky(50, 320, ctx, this.gravity);
     this.floor = new Floor(0, 400, ctx);
     this.danger = new Danger(850, 350, ctx);
+    this.bonus = new Bonus(500, 320, ctx);
+    this.goal = new Goal(700, 300, ctx);
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
+    this.counter = 0;
   }
 
   drawBoard() {
@@ -33,11 +36,14 @@ class Game {
   }
 
   update() {
-    //this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     this.drawBoard();
     this.floor.moveLeft();
     this.danger.moveLeft();
+    this.bonus.moveLeft();
     this.floor.draw();
+    this.bonus.draw();
+    this.goal.draw();
     this.danger.draw();
     this.lucky.update();
     this.lucky.draw();
