@@ -61,7 +61,7 @@ https://trello.com/b/XAmkDgev
 ### Git
 URls for the project repo and deploy
 [Link Repo](http://github.com/johanBautista/GAME/tree/master)
-[Link Deploy](http://github.com/johanBautista/GAME/tree/deploy)
+[Link Deploy](http://github.com/johanBautista/GAME/tree/develop)
 
 
 ### Slides
