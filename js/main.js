@@ -5,10 +5,6 @@ document.onload = (function() {
   canvas.width = 1000;
   canvas.height = 500;
 
-  game = new Game(ctx);
+  game = new Game(ctx, canvas.width, canvas.height);
   game.start();
 })();
-
-// hacer que el cuadrado salte
-// poner limites a la izquierda del screen
-// tratar al suelo como ....
