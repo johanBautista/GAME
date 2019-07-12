@@ -2,7 +2,7 @@ class Floor {
   constructor(x, y, ctx) {
     this.x = x;
     this.y = y;
-    this.width = 10000;
+    this.width = 15000; // cambiar floor de inicio
     this.height = 95;
     this.color = "#257d8a";
     this.ctx = ctx;
