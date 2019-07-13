@@ -2,9 +2,6 @@ class Game {
   constructor(ctx, canvasWidth, canvasHeight) {
     this.ctx = ctx;
     this.lucky = new Lucky(50, 320, ctx);
-    //this.floor = new Floor(0, 400, ctx);
-    //this.floorRandom = new FloorRand(900, 400, ctx);
-    //this.floor = [];
     this.goal = new Goal(700, 300, ctx);
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
@@ -70,9 +67,13 @@ class Game {
   }
 
   drawEnemies() {
-    this.enemies.forEach(function(danger) {
-      danger.draw();
-      danger.moveLeft();
+    this.enemies.forEach(danger => {
+      if (this.lucky.checkIfTouch(danger)) {
+        console.log("game");
+      } else {
+        danger.draw();
+        danger.moveLeft();
+      }
     });
   }
 
@@ -91,25 +92,6 @@ class Game {
     });
   }
   ////////////////////////////////////////////    colisions!
-
-  // collision() {
-  //   if (
-  //     //lucky vs floor
-  //     this.lucky.x < this.floorR.x + this.floorR.width &&
-  //     this.lucky.x + this.lucky.width > this.floorR.x &&
-  //     this.lucky.y < this.floorR.y &&
-  //     this.lucky.height + this.lucky.y > this.floorR.y
-  //   ) {
-  //     this.lucky.y = this.floorR.y - this.lucky.height;
-  //   }
-  // }
-
-  // checkFloor() {
-  //   this.floorR.forEach(randomF => {
-  //     console.log(randomF);
-  //     this.lucky.checkIfFloors(randomF);
-  //   });
-  // }
 
   checkCollition() {
     this.enemies.forEach(enemy => {
