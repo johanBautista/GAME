@@ -7,4 +7,10 @@ document.onload = (function() {
 
   game = new Game(ctx, canvas.width, canvas.height);
   game.start();
+
+  game.gameOver = function() {
+    let gameOver = document.getElementById("gameover");
+    canvas.style = "display: none";
+    gameOver.style = "display: block";
+  };
 })();

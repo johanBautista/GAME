@@ -1,9 +1,9 @@
 class Danger {
-  constructor(x, y, ctx) {
+  constructor(x, y, ctx, enemies) {
     this.x = x;
     this.y = y;
-    this.width = 50;
-    this.height = 50;
+    this.width = 70;
+    this.height = 40;
     this.color = "#fc9423";
     this.ctx = ctx;
   }

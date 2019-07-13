@@ -8,13 +8,17 @@
   </head>
   <body>
     <canvas id="myGame" style="border:5px solid rgb(255, 225, 0)" ;></canvas>
-    <canvas id="myStart"></canvas>
+    <button type="button" id="startBtn" onclick="game.start()">START</button>
+    <div id="gameover" style="display: none">
+      <h5>GAME OVER</h5>
+    </div>
+    <script src="js/floorRandom.js"></script>
+    <script src="js/bonus.js"></script>
+    <script src="js/goal.js"></script>
+    <script src="js/floor.js"></script>
+    <script src="js/danger.js"></script>
+    <script src="js/lucky.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
   </body>
-  <script src="js/bonus.js"></script>
-  <script src="js/goal.js"></script>
-  <script src="js/floor.js"></script>
-  <script src="js/danger.js"></script>
-  <script src="js/lucky.js"></script>
-  <script src="js/game.js"></script>
-  <script src="js/main.js"></script>
 </html>

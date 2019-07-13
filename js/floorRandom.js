@@ -1,8 +1,8 @@
-class Floor {
+class FloorRand {
   constructor(x, y, ctx) {
     this.x = x;
     this.y = y;
-    this.width = 1000; // cambiar floor de inicio
+    this.width = 450; // cambiar floor de inicio
     this.height = 95;
     this.color = "#257d8a";
     this.ctx = ctx;

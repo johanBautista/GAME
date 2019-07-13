@@ -1,12 +1,11 @@
 class Bonus {
-  constructor(x, y, ctx) {
+  constructor(x, y, ctx, bonust) {
     this.x = x;
     this.y = y;
     this.width = 20;
     this.height = 20;
     this.color = "#f11e0f";
     this.ctx = ctx;
-    console.log("1");
   }
   draw() {
     this.ctx.fillStyle = this.color;
