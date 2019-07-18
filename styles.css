@@ -2,12 +2,27 @@
   margin: 0;
   padding: 0;
 }
-
-body {
+.diseny {
+  /* background-color: #b63030; */
+  background-image: url("/images/backg/bg_winter.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 450px;
+}
+h1 {
+  text-align: center;
+  font-family: "Shojumaru", cursive;
+  color: #ffffff;
+  font-size: 150px;
+}
+#start-screen {
+  width: 1000px;
+  height: 750px;
   background-image: url("/images/screens/intro2.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
+
 .inicioScreen {
   /* border: #b63030 solid 3px; */
   margin-top: 50px;
@@ -15,8 +30,8 @@ body {
 }
 
 #myGame {
+  display: none;
   margin: 100px;
-  display: inline;
 }
 
 .start {

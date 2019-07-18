@@ -9,7 +9,7 @@ class Game {
     this.enemies = [];
     this.floors = [];
     this.bonust = [];
-    this.scoret = [];
+    this.scoret = 0;
     this.intervalGame = undefined;
     this.statusGameOver = false;
   }
@@ -52,9 +52,14 @@ class Game {
   }
 
   generateEnemy() {
-    if (this.counter % 150 === 0) {
-      this.enemies.push(new Danger(1650, 730, ctx));
-      // como limitar los enemigoa a una posicion
+    // if (this.counter < 2000 || this.counter > 3000) pasa enemigos desde 2000 a 3000
+
+    if (this.counter < 2000) {
+      // console.log(this.counter);
+      if (this.counter % 150 === 0) {
+        this.enemies.push(new Danger(1650, 310, ctx));
+        // como limitar los enemigoa a una posicion
+      }
     }
     // if (this.counter % 150 === 0) {
     //   this.enemies.push(new Danger(1650, 310, ctx));
@@ -90,7 +95,7 @@ class Game {
     this.enemies.forEach(danger => {
       this.lucky.checkIfTouch(danger);
       danger.draw();
-      danger.moveLeft();
+      // danger.moveLeft();
     });
   }
 
@@ -120,7 +125,7 @@ class Game {
       if (
         this.lucky.x < 0 ||
         this.lucky.y < -50 ||
-        this.lucky.y + this.lucky.width > 730
+        this.lucky.y + this.lucky.width > 750
       ) {
         // this.gameOver();
         console.log("LIMITES");
@@ -130,6 +135,8 @@ class Game {
     this.bonust.forEach(point => {
       if (this.lucky.checkIfTouch(point)) {
         console.log("sushi");
+        this.bonust.splice(0);
+        this.scoret++;
         this.score();
       }
     });
@@ -175,7 +182,7 @@ class Game {
     ctx.font = "30px Avenir";
     ctx.fillStyle = "red";
     ctx.fillText("SCORE", 30, 50);
-    ctx.fillText(this.bonust.length, 150, 50);
+    ctx.fillText(this.scoret, 150, 50);
   }
 
   update() {
@@ -192,6 +199,7 @@ class Game {
     this.generateBonus();
     this.drawBonus();
     this.checkCollition(); //ojo este bueno
+    this.score();
     if (this.intervalGame) {
       this.intervalGame = window.requestAnimationFrame(this.update.bind(this));
     }

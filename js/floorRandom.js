@@ -4,7 +4,7 @@ class FloorRand {
     this.y = y;
     this.width = 200; // cambiar floor de inicio
     this.height = 25;
-    this.color = "red";
+    this.color = "white";
     this.ctx = ctx;
   }
 
