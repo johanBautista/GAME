@@ -3,7 +3,7 @@ class Floor {
     this.x = x;
     this.y = y;
     this.width = 7000; // cambiar floor de inicio
-    this.height = 600;
+    this.height = 700;
     this.color = "#fff";
     this.ctx = ctx;
   }
@@ -14,7 +14,7 @@ class Floor {
   }
 
   moveLeft() {
-    this.x -= 3;
-    console.log("pingucamnia");
+    this.x -= 9;
+    // console.log("pingucamnia");
   }
 }

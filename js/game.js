@@ -55,11 +55,15 @@ class Game {
     // if (this.counter < 2000 || this.counter > 3000) pasa enemigos desde 2000 a 3000
 
     if (this.counter < 2000) {
-      // console.log(this.counter);
-      if (this.counter % 150 === 0) {
-        this.enemies.push(new Danger(1650, 310, ctx));
-        // como limitar los enemigoa a una posicion
+      if (this.counter % 240 === 0) {
+        this.enemies.push(new Danger(550, 310, ctx));
       }
+    }
+    if (this.counter > 5000 || this.counter < 6000) {
+      if (this.counter % 240 === 0) {
+        this.enemies.push(new Danger(4550, 710, ctx));
+      }
+      console.log(this.counter);
     }
     // if (this.counter % 150 === 0) {
     //   this.enemies.push(new Danger(1650, 310, ctx));
@@ -68,19 +72,21 @@ class Game {
 
   generateBonus() {
     if (this.counter % 80 === 0) {
-      this.bonust.push(new Bonus(150, 300, ctx));
+      if (this.counter < 2000 || this.counter > 5000) {
+        this.bonust.push(new Bonus(650, 270, ctx));
+      }
     }
   }
 
   generateFloors() {
-    if (this.counter % 100 === 0) {
-      this.floors.push(new FloorRand(1000, 730, ctx));
-    }
+    // if (this.counter % 100 === 0) {
+    //   this.floors.push(new FloorRand(1000, 730, ctx));
+    // }
     if (this.counter % 150 === 0) {
-      this.floors.push(new FloorRand(13500, 550, ctx));
+      this.floors.push(new FloorRand(13800, 730, ctx));
     }
     if (this.counter % 200 === 0) {
-      this.floors.push(new FloorRand(14000, 400, ctx));
+      this.floors.push(new FloorRand(14000, 620, ctx));
     }
   }
   //////////////////////////////////////////  draw!
@@ -110,7 +116,7 @@ class Game {
   drawBonus() {
     this.bonust.forEach(bonus => {
       bonus.draw();
-      bonus.moveLeft();
+      // bonus.moveLeft();
     });
   }
   ////////////////////////////////////////////
@@ -179,8 +185,12 @@ class Game {
 
   score() {
     // aparece en pantalla 1 cuadro 1 punto
+    this.ctx.fillStyle = "greey";
+    this.ctx.fillRect(18, 18, 193, 53);
+    this.ctx.fillStyle = "#253F5C";
+    this.ctx.fillRect(15, 15, 190, 50);
     ctx.font = "30px Avenir";
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "white";
     ctx.fillText("SCORE", 30, 50);
     ctx.fillText(this.scoret, 150, 50);
   }

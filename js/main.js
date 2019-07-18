@@ -1,8 +1,8 @@
 document.onload = (function() {
   let canvas = document.getElementById("myGame");
   this.ctx = canvas.getContext("2d");
-  canvas.width = 3000;
-  canvas.height = 1740;
+  canvas.width = 900;
+  canvas.height = 740;
 
   let game = "";
 
