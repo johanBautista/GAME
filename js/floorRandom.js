@@ -1,19 +1,19 @@
 class FloorRand {
-  constructor(x, y, ctx) {
+  constructor(x, y, ctx, width, height) {
     this.x = x;
     this.y = y;
-    this.width = 450; // cambiar floor de inicio
-    this.height = 95;
-    this.color = "#257d8a";
+    this.width = 200; // cambiar floor de inicio
+    this.height = 25;
+    this.color = "red";
     this.ctx = ctx;
   }
 
   draw() {
     this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.ctx.fillRect(this.x, this.y, this.width, this.height); //drawImage (this.imagen,this.x ...660, 450 px del sprite)
   }
 
   moveLeft() {
-    this.x -= 1;
+    this.x -= 3;
   }
 }

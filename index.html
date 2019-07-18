@@ -4,15 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/styles.css" />
     <title>Document</title>
   </head>
   <body>
-    <canvas id="myGame" style="border:5px solid rgb(255, 225, 0)" ;></canvas>
-    <button type="button" id="startBtn" onclick="game.start()">START</button>
-    <div id="gameover" style="display: none">
-      <h5>GAME OVER</h5>
+    <canvas id="myGame"></canvas>
+    <div id="inicio" class="inicioScreen">
+      <div id="loadGame" class="start">
+        <button id="start-btn" class="btn">
+          START
+        </button>
+        <button id="pause-btn" class="btn pausa">PAUSE</button>
+        <!-- <img src="/images/screens/intro.png" alt="" /> -->
+      </div>
     </div>
+
+    <div id="gameover" class="gameOver"></div>
+
     <script src="js/floorRandom.js"></script>
+    <script src="js/back.js"></script>
     <script src="js/bonus.js"></script>
     <script src="js/goal.js"></script>
     <script src="js/floor.js"></script>

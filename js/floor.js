@@ -1,10 +1,10 @@
 class Floor {
-  constructor(x, y, ctx) {
+  constructor(x, y, ctx, width, height) {
     this.x = x;
     this.y = y;
-    this.width = 1000; // cambiar floor de inicio
-    this.height = 95;
-    this.color = "#257d8a";
+    this.width = 7000; // cambiar floor de inicio
+    this.height = 600;
+    this.color = "#fff";
     this.ctx = ctx;
   }
 
@@ -14,6 +14,7 @@ class Floor {
   }
 
   moveLeft() {
-    this.x -= 1;
+    this.x -= 3;
+    console.log("pingucamnia");
   }
 }

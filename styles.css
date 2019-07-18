@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("/images/screens/intro2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.inicioScreen {
+  /* border: #b63030 solid 3px; */
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+#myGame {
+  margin: 100px;
+  display: inline;
+}
+
+.start {
+  padding-left: 200px;
+}
+
+.btn {
+  background-color: #b63030;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 32px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+}
+.btn.pausa {
+  background-color: #1491a1;
+  /* color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 32px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px; */
+}
+.btn:hover {
+  background-color: #3e8e41;
+  color: white;
+}
+.gameOver {
+  background-color: #3e8e41;
+}

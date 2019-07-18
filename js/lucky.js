@@ -2,26 +2,28 @@ class Lucky {
   constructor(x, y, ctx) {
     this.x = x;
     this.y = y;
-    this.width = 80;
-    this.height = 80;
+    this.width = 70;
+    this.height = 60;
     this.vx = 0;
     this.vy = 0;
     this.saltar = true;
     this.color = "#AAAAAA";
     this.ctx = ctx;
-    this.gravity = 3;
-    // this.player = "penguin_die01@2x.png";  -------------  protocolo pa poner imagenes
-    // this.imagen = new Image();           -------------  para crear animacion como se sube el conjunto de img
-    // this.imagen.src = this.player;
+    this.gravity = 9;
+    this.luckyImg = "images/pingu/walk/pingu_walk2.png"; //--------
+    this.imagen = new Image(); //        -------------
+    this.imagen.src = this.luckyImg;
   }
   checkIfTouch(enemy) {
-    if (
+    return (
+      // si es if solo me detecta bordes
       this.x < enemy.x + enemy.width &&
       this.x + this.width > enemy.x &&
       this.y < enemy.y + enemy.height &&
       this.y + this.height > enemy.y
     );
   }
+
   checkIfFloors(floor) {
     if (
       //lucky vs floorRandom
@@ -36,9 +38,10 @@ class Lucky {
 
   draw() {
     this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.imagen, this.x, this.y, 70, 60);
   }
-  move() {
+  turbo() {
+    this.x += 50;
     // console.log("tito");
   }
   moveRight() {
@@ -49,8 +52,9 @@ class Lucky {
     this.x -= 20;
   }
   moveJump() {
-    this.y -= 100;
-    this.x += 90;
+    this.y -= 200;
+    this.x += 100;
+    // this.x -= 50;
   }
   moveDown() {
     this.y += 20;

@@ -1,16 +1,19 @@
 class Game {
   constructor(ctx, canvasWidth, canvasHeight) {
     this.ctx = ctx;
-    this.lucky = new Lucky(50, 320, ctx);
-    this.goal = new Goal(700, 300, ctx);
+    this.lucky = new Lucky(5, -100, ctx);
+    this.goal = new Goal(23000, 300, ctx);
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
     this.counter = 0;
     this.enemies = [];
     this.floors = [];
     this.bonust = [];
+    this.scoret = [];
+    this.intervalGame = undefined;
+    this.statusGameOver = false;
   }
-  //////////////////////////////////////////          PRUEBA2!
+  //////////////////////////////////////////          PRUEBA!
 
   assignControls() {
     document.onkeydown = e => {
@@ -27,11 +30,11 @@ class Game {
         case 40:
           this.lucky.moveDown();
           break;
+        case 70:
+          this.lucky.turbo();
+          break;
         case 88: // 1. case para pausa.
           this.pause();
-          break;
-        case 83: // 1. case para pausa.
-          this.start();
           break;
       }
     };
@@ -39,24 +42,40 @@ class Game {
 
   ////////////////////////////////////////////    generate!
 
+  generateGame() {
+    this.floors.push(new Floor(0, 330, this.ctx));
+    this.floors.push(new Floor(7000, 730, this.ctx));
+    this.floors.push(new Floor(8050, -300, this.ctx));
+    this.floors.push(new Floor(15050, -300, this.ctx));
+    // this.floors.push(new FloorRand(2300, 330, this.ctx));
+    this.floors.push(new Floor(22900, 330, this.ctx));
+  }
+
   generateEnemy() {
-    if (this.counter % 960 === 0) {
-      this.enemies.push(new Danger(1050, 350, ctx));
-      console.log(this.enemies, "tito");
+    if (this.counter % 150 === 0) {
+      this.enemies.push(new Danger(1650, 730, ctx));
+      // como limitar los enemigoa a una posicion
     }
+    // if (this.counter % 150 === 0) {
+    //   this.enemies.push(new Danger(1650, 310, ctx));
+    // }
   }
 
   generateBonus() {
-    if (this.counter % 180 === 0) {
-      this.bonust.push(new Bonus(1050, 300, ctx));
-      console.log(this.bonust, "tita");
+    if (this.counter % 80 === 0) {
+      this.bonust.push(new Bonus(150, 300, ctx));
     }
   }
 
   generateFloors() {
-    if (this.counter % 80 === 0) {
-      this.floors.push(new FloorRand(1050, 380, ctx));
-      console.log("titi");
+    if (this.counter % 100 === 0) {
+      this.floors.push(new FloorRand(1000, 730, ctx));
+    }
+    if (this.counter % 150 === 0) {
+      this.floors.push(new FloorRand(13500, 550, ctx));
+    }
+    if (this.counter % 200 === 0) {
+      this.floors.push(new FloorRand(14000, 400, ctx));
     }
   }
   //////////////////////////////////////////  draw!
@@ -67,13 +86,11 @@ class Game {
   }
 
   drawEnemies() {
+    // ojo este bueno con checkCollition
     this.enemies.forEach(danger => {
-      if (this.lucky.checkIfTouch(danger)) {
-        console.log("game");
-      } else {
-        danger.draw();
-        danger.moveLeft();
-      }
+      this.lucky.checkIfTouch(danger);
+      danger.draw();
+      danger.moveLeft();
     });
   }
 
@@ -91,79 +108,92 @@ class Game {
       bonus.moveLeft();
     });
   }
-  ////////////////////////////////////////////    colisions!
+  ////////////////////////////////////////////
 
   checkCollition() {
+    //mejor opcion detecta bordes-enemigo sin problemas de contacto
     this.enemies.forEach(enemy => {
       if (this.lucky.checkIfTouch(enemy)) {
-        this.gameOver();
+        // this.gameOver();
+        console.log("GAME OVER");
       }
       if (
         this.lucky.x < 0 ||
-        this.lucky.y < 0 ||
-        this.lucky.y + this.lucky.width > 480
+        this.lucky.y < -50 ||
+        this.lucky.y + this.lucky.width > 730
       ) {
-        this.gameOver();
+        // this.gameOver();
+        console.log("LIMITES");
       }
     });
 
-    // this.bonust.forEach(point => {
-    //   if (this.lucky.checkIfTouch(point)) {
-    //     console.log("total puntos" + this.bonust.length);
-    //   }
-    // });
+    this.bonust.forEach(point => {
+      if (this.lucky.checkIfTouch(point)) {
+        console.log("sushi");
+        this.score();
+      }
+    });
   }
+
   //////////////////////////////////////////// carga!
+
+  start() {
+    this.assignControls();
+    this.generateGame();
+    this.intervalGame = window.requestAnimationFrame(this.update.bind(this));
+  }
+
+  pause() {
+    if (this.intervalGame) {
+      this.intervalGame = window.cancelAnimationFrame(this.intervalGame);
+    } else {
+    }
+  }
+
+  gameOver() {
+    this.statusGameOver = true;
+    this.pause();
+    console.log("game over");
+    let canvas = document.getElementById("myGame");
+    canvas.style = "display: none";
+    let gameOver = document.getElementById("gameover");
+    gameOver.style = "display: none";
+  }
+
+  winner() {
+    if (this.lucky.checkIfTouch(this.goal)) {
+      this.pause();
+      ctx.font = "30px Avenir";
+      ctx.fillStyle = "red";
+      ctx.fillText("YOU WINN", 30, 50);
+      console.log("finnn");
+    }
+  }
+
+  score() {
+    // aparece en pantalla 1 cuadro 1 punto
+    ctx.font = "30px Avenir";
+    ctx.fillStyle = "red";
+    ctx.fillText("SCORE", 30, 50);
+    ctx.fillText(this.bonust.length, 150, 50);
+  }
 
   update() {
     this.counter++;
     this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     this.drawBoard();
-    this.generateFloors(); //  -------------- tengo problemas al generar el floor random me elimina el array danger ?
+    this.goal.draw();
+    this.generateFloors();
     this.drawFloors();
-    //this.floor.moveLeft();
-    //this.floor.draw();
     this.lucky.update();
     this.lucky.draw();
     this.generateEnemy();
     this.drawEnemies();
     this.generateBonus();
     this.drawBonus();
-    //this.collision();
-    //this.collision2();
-    // this.checkCollition();
-    this.intervalGame = window.requestAnimationFrame(this.update.bind(this));
-  }
-
-  start() {
-    startBtn.style.display = "none";
-    this.assignControls();
-    this.floors.push(new FloorRand(139, 400, this.ctx));
-    this.update();
-  }
-
-  gameOver() {
-    window.cancelAnimationFrame(this.intervalGame);
-    this.intervalGame = undefined;
-  }
-
-  pause() {
-    // 1. funcion stop.
+    this.checkCollition(); //ojo este bueno
     if (this.intervalGame) {
-      window.cancelAnimationFrame(this.intervalGame);
-      this.intervalGame = undefined;
+      this.intervalGame = window.requestAnimationFrame(this.update.bind(this));
     }
   }
-  // score() {
-  //   ctx.font = "100px Avenir";
-  //   ctx.fillStyle = "white";
-  //   ctx.fillText("GAME OVER", 100, 100);
-  //   ctx.fillText(this.enemies.length, 226, 150);
-  // }
 }
-/* 
-      1. colision con floorRandom
-      2.problema con bonus
-
-
-*/
