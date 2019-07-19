@@ -9,7 +9,7 @@ class Goal {
   }
 
   draw() {
-    this.ctx.fillStyle = this.color;
+    this.ctx.fillStyle = this.color; //"#7d1660"
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 }
