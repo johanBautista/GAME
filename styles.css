@@ -4,7 +4,7 @@
 }
 .diseny {
   /* background-color: #b63030; */
-  background-image: url("/images/backg/bg_winter.png");
+  background-image: url("GAME/images/backg/bg_winter.png");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 5% 25%;
