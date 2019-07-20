@@ -4,7 +4,7 @@
 }
 .diseny {
   /* background-color: #b63030; */
-  background-image: url("GAME/images/backg/bg_winter.png");
+  background-image: url("images/backg/bg_winter.png");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 5% 25%;
@@ -19,7 +19,7 @@ h1 {
 #start-screen {
   width: 1100px;
   height: 800px;
-  background-image: url("/images/screens/gamestart.png");
+  background-image: url("images/screens/gamestart.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -59,7 +59,7 @@ h1 {
 .gameOver {
   width: 1100px;
   height: 800px;
-  background-image: url("/images/screens/gameover.png");
+  background-image: url("images/screens/gameover.png");
   background-size: contain;
   background-repeat: no-repeat;
   display: none;
@@ -67,7 +67,7 @@ h1 {
 .gameWinn {
   width: 1100px;
   height: 800px;
-  background-image: url("/images/screens/winner.png");
+  background-image: url("images/screens/winner.png");
   background-size: contain;
   background-repeat: no-repeat;
   display: none;
