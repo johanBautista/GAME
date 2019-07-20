@@ -13,7 +13,9 @@
   </head>
   <body>
     <div class="diseny">
-      <h1>Lucky !</h1>
+      <div id="game-over" class="gameOver"></div>
+      <div id="game-winner" class="gameWinn"></div>
+
       <div id="start-screen"></div>
       <canvas id="myGame"></canvas>
       <div id="inicio" class="inicioScreen">
@@ -21,12 +23,11 @@
           <button id="start-btn" class="btn">
             START
           </button>
-          <button id="pause-btn" class="btn pausa">PAUSE</button>
+          <!-- <audio id="start-sound" src="music/game.mp3"></audio> -->
+          <!-- <button id="pause-btn" class="btn pausa">PAUSE</button> -->
           <!-- <img src="/images/screens/intro.png" alt="" /> -->
         </div>
       </div>
-
-      <div id="gameover" class="gameOver"></div>
     </div>
 
     <script src="js/floorRandom.js"></script>

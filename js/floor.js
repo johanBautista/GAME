@@ -6,15 +6,18 @@ class Floor {
     this.height = 700;
     this.color = "#fff";
     this.ctx = ctx;
+    this.floorImg = "images/backg/bloques-fijo2.png";
+    this.imagen = new Image();
+    this.imagen.src = this.floorImg;
   }
 
   draw() {
     this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.imagen, this.x, this.y, this.width, this.height);
   }
 
   moveLeft() {
-    this.x -= 9;
+    this.x -= 3;
     // console.log("pingucamnia");
   }
 }

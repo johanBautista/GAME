@@ -6,11 +6,14 @@ class FloorRand {
     this.height = 25;
     this.color = "white";
     this.ctx = ctx;
+    this.floorRandomImg = "images/backg/bloque-random.png";
+    this.imagen = new Image();
+    this.imagen.src = this.floorRandomImg;
   }
 
   draw() {
     this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x, this.y, this.width, this.height); //drawImage (this.imagen,this.x ...660, 450 px del sprite)
+    this.ctx.drawImage(this.imagen, this.x, this.y, this.width, this.height); //drawImage (this.imagen,this.x ...660, 450 px del sprite)
   }
 
   moveLeft() {

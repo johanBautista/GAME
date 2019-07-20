@@ -2,7 +2,7 @@ class Game {
   constructor(ctx, canvasWidth, canvasHeight) {
     this.ctx = ctx;
     this.lucky = new Lucky(5, -100, ctx);
-    this.goal = new Goal(23000, 300, ctx);
+    this.goal = new Goal(800, 260, ctx);
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
     this.counter = 0;
@@ -12,6 +12,16 @@ class Game {
     this.scoret = 0;
     this.intervalGame = undefined;
     this.statusGameOver = false;
+    this.statusGameWinn = false;
+    this.boardImg = "images/backg/back-game1 corte.png";
+    this.imagen = new Image();
+    this.imagen.src = this.boardImg;
+    this.sound_punto = new Audio();
+    this.sound_punto.src = "music/bonus.mp3";
+    this.sound_danger = new Audio();
+    this.sound_danger.src = "music/danger.mp3";
+    this.sound_over = new Audio();
+    this.sound_over.src = "music/gameover.mp3";
   }
   //////////////////////////////////////////          PRUEBA!
 
@@ -45,10 +55,11 @@ class Game {
   generateGame() {
     this.floors.push(new Floor(0, 330, this.ctx));
     this.floors.push(new Floor(7000, 730, this.ctx));
-    this.floors.push(new Floor(8050, -300, this.ctx));
-    this.floors.push(new Floor(15050, -300, this.ctx));
-    // this.floors.push(new FloorRand(2300, 330, this.ctx));
-    this.floors.push(new Floor(22900, 330, this.ctx));
+    this.floors.push(new FloorRand(20000, 350, this.ctx));
+    this.floors.push(new Floor(19950, 330, this.ctx));
+    this.floors.push(new Floor(22250, 200, this.ctx));
+    this.floors.push(new Floor(22250, 150, this.ctx));
+    this.floors.push(new Floor(22250, 0, this.ctx));
   }
 
   generateEnemy() {
@@ -93,7 +104,13 @@ class Game {
 
   drawBoard() {
     this.ctx.fillStyle = "#253F5C";
-    this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+    this.ctx.drawImage(
+      this.imagen,
+      0,
+      -15,
+      this.canvasWidth,
+      this.canvasHeight
+    );
   }
 
   drawEnemies() {
@@ -101,7 +118,6 @@ class Game {
     this.enemies.forEach(danger => {
       this.lucky.checkIfTouch(danger);
       danger.draw();
-      // danger.moveLeft();
     });
   }
 
@@ -116,7 +132,7 @@ class Game {
   drawBonus() {
     this.bonust.forEach(bonus => {
       bonus.draw();
-      // bonus.moveLeft();
+      bonus.moveLeft();
     });
   }
   ////////////////////////////////////////////
@@ -125,27 +141,30 @@ class Game {
     //mejor opcion detecta bordes-enemigo sin problemas de contacto
     this.enemies.forEach(enemy => {
       if (this.lucky.checkIfTouch(enemy)) {
+        this.sound_danger.play();
         // this.gameOver();
-        console.log("GAME OVER");
       }
       if (
         this.lucky.x < 0 ||
         this.lucky.y < -50 ||
         this.lucky.y + this.lucky.width > 750
       ) {
-        // this.gameOver();
-        console.log("LIMITES");
+        this.gameOver();
       }
     });
 
     this.bonust.forEach(point => {
       if (this.lucky.checkIfTouch(point)) {
-        console.log("sushi");
+        this.sound_punto.play();
         this.bonust.splice(0);
         this.scoret++;
         this.score();
       }
     });
+
+    if (this.lucky.checkIfTouch(this.goal)) {
+      this.gameWinner();
+    }
   }
 
   //////////////////////////////////////////// carga!
@@ -165,22 +184,21 @@ class Game {
 
   gameOver() {
     this.statusGameOver = true;
+    // this.sound_over.play(); el start se solpa con over?
     this.pause();
-    console.log("game over");
     let canvas = document.getElementById("myGame");
     canvas.style = "display: none";
-    let gameOver = document.getElementById("gameover");
-    gameOver.style = "display: none";
+    let gameOver = document.getElementById("game-over");
+    gameOver.style = "display: block";
   }
 
-  winner() {
-    if (this.lucky.checkIfTouch(this.goal)) {
-      this.pause();
-      ctx.font = "30px Avenir";
-      ctx.fillStyle = "red";
-      ctx.fillText("YOU WINN", 30, 50);
-      console.log("finnn");
-    }
+  gameWinner() {
+    this.statusGameWinn = true;
+    this.pause();
+    let canvas = document.getElementById("myGame");
+    canvas.style = "display: none";
+    let gameWinner = document.getElementById("game-winner");
+    gameWinner.style = "display: block";
   }
 
   score() {
@@ -196,6 +214,7 @@ class Game {
   }
 
   update() {
+    audio.play();
     this.counter++;
     this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     this.drawBoard();
@@ -210,6 +229,7 @@ class Game {
     this.drawBonus();
     this.checkCollition(); //ojo este bueno
     this.score();
+
     if (this.intervalGame) {
       this.intervalGame = window.requestAnimationFrame(this.update.bind(this));
     }

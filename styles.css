@@ -7,7 +7,8 @@
   background-image: url("/images/backg/bg_winter.png");
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 450px;
+  padding: 5% 25%;
+  position: fixed;
 }
 h1 {
   text-align: center;
@@ -16,9 +17,9 @@ h1 {
   font-size: 150px;
 }
 #start-screen {
-  width: 1000px;
-  height: 750px;
-  background-image: url("/images/screens/intro2.png");
+  width: 1100px;
+  height: 800px;
+  background-image: url("/images/screens/gamestart.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -39,29 +40,35 @@ h1 {
 }
 
 .btn {
-  background-color: #b63030;
+  background-color: #1d698b;
   color: white;
   border: none;
   border-radius: 12px;
-  padding: 32px 32px;
+  padding: 32px 160px;
   text-align: center;
   text-decoration: none;
   font-size: 24px;
 }
 .btn.pausa {
   background-color: #1491a1;
-  /* color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 32px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 24px; */
 }
 .btn:hover {
   background-color: #3e8e41;
   color: white;
 }
 .gameOver {
-  background-color: #3e8e41;
+  width: 1100px;
+  height: 800px;
+  background-image: url("/images/screens/gameover.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: none;
+}
+.gameWinn {
+  width: 1100px;
+  height: 800px;
+  background-image: url("/images/screens/winner.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: none;
 }
