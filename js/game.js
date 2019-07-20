@@ -142,7 +142,7 @@ class Game {
     this.enemies.forEach(enemy => {
       if (this.lucky.checkIfTouch(enemy)) {
         this.sound_danger.play();
-        // this.gameOver();
+        this.gameOver();
       }
       if (
         this.lucky.x < 0 ||
