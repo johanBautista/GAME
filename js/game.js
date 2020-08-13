@@ -13,15 +13,15 @@ class Game {
     this.intervalGame = undefined;
     this.statusGameOver = false;
     this.statusGameWinn = false;
-    this.boardImg = "images/backg/back-game1 corte.png";
+    this.boardImg = 'images/backg/back-game1 corte.png';
     this.imagen = new Image();
     this.imagen.src = this.boardImg;
     this.sound_punto = new Audio();
-    this.sound_punto.src = "music/bonus.mp3";
+    this.sound_punto.src = 'music/bonus.mp3';
     this.sound_danger = new Audio();
-    this.sound_danger.src = "music/danger.mp3";
+    this.sound_danger.src = 'music/danger.mp3';
     this.sound_over = new Audio();
-    this.sound_over.src = "music/gameover.mp3";
+    this.sound_over.src = 'music/gameover.mp3';
   }
   //////////////////////////////////////////          PRUEBA!
 
@@ -74,7 +74,7 @@ class Game {
       if (this.counter % 240 === 0) {
         this.enemies.push(new Danger(4550, 710, ctx));
       }
-      console.log(this.counter);
+      // console.log(this.counter);
     }
     // if (this.counter % 150 === 0) {
     //   this.enemies.push(new Danger(1650, 310, ctx));
@@ -103,13 +103,13 @@ class Game {
   //////////////////////////////////////////  draw!
 
   drawBoard() {
-    this.ctx.fillStyle = "#253F5C";
+    this.ctx.fillStyle = '#253F5C';
     this.ctx.drawImage(
       this.imagen,
       0,
       -15,
       this.canvasWidth,
-      this.canvasHeight
+      this.canvasHeight,
     );
   }
 
@@ -186,30 +186,30 @@ class Game {
     this.statusGameOver = true;
     // this.sound_over.play(); el start se solpa con over?
     this.pause();
-    let canvas = document.getElementById("myGame");
-    canvas.style = "display: none";
-    let gameOver = document.getElementById("game-over");
-    gameOver.style = "display: block";
+    let canvas = document.getElementById('myGame');
+    canvas.style = 'display: none';
+    let gameOver = document.getElementById('game-over');
+    gameOver.style = 'display: block';
   }
 
   gameWinner() {
     this.statusGameWinn = true;
     this.pause();
-    let canvas = document.getElementById("myGame");
-    canvas.style = "display: none";
-    let gameWinner = document.getElementById("game-winner");
-    gameWinner.style = "display: block";
+    let canvas = document.getElementById('myGame');
+    canvas.style = 'display: none';
+    let gameWinner = document.getElementById('game-winner');
+    gameWinner.style = 'display: block';
   }
 
   score() {
     // aparece en pantalla 1 cuadro 1 punto
-    this.ctx.fillStyle = "greey";
+    this.ctx.fillStyle = 'greey';
     this.ctx.fillRect(18, 18, 193, 53);
-    this.ctx.fillStyle = "#253F5C";
+    this.ctx.fillStyle = '#253F5C';
     this.ctx.fillRect(15, 15, 190, 50);
-    ctx.font = "30px Avenir";
-    ctx.fillStyle = "white";
-    ctx.fillText("SCORE", 30, 50);
+    ctx.font = '30px Avenir';
+    ctx.fillStyle = 'white';
+    ctx.fillText('SCORE', 30, 50);
     ctx.fillText(this.scoret, 150, 50);
   }
 
